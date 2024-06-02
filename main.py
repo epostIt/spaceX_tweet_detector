@@ -1,6 +1,8 @@
 import feedparser
 from setup_clients import setup_clients
 
+openAI_client, twilio_client, twilio_phone_number, my_phone_number = setup_clients() #setup global variables for tests. Ew.
+
 def is_affirmative(answer):
     affirmative_responses = {"yes", "yes."}
     return answer in affirmative_responses
@@ -23,7 +25,7 @@ def get_GPT_determination(openAI_client, text):
         return None
 
 
-def check_feed_entries(feed):
+def get_most_recent_tweet(feed):
     if not feed.entries:
         print("No entries found in the feed.")
         return None
@@ -43,16 +45,13 @@ def is_about_spacex(text):
 def get_elon_musk_tweets():
     url = "https://rss.app/feeds/hBAXFi4R57sF7S3y.xml"
     feed = feedparser.parse(url)
-    return check_feed_entries(feed)
+    return get_most_recent_tweet(feed)
+    
 
-def main():
+if __name__ == "__main__":
     most_recent_tweet = get_elon_musk_tweets()
     if most_recent_tweet:
         if is_about_spacex(most_recent_tweet.title):
             send_sms(twilio_client, twilio_phone_number, my_phone_number, most_recent_tweet.link)
         else:
             print('nope')
-
-if __name__ == "__main__":
-    openAI_client, twilio_client, twilio_phone_number, my_phone_number = setup_clients()
-    main()
