@@ -74,7 +74,7 @@ python main.py
 
 ## Running Tests
 
-To run the tests, you can use `unittest`. Note: These tests were generated with the help of AI and might not be fully robust. Please review and modify them as necessary.
+To run the tests, you can use `unittest`. Note: The tests included in this project were written by an AI assistant. While efforts have been made to ensure their accuracy, they might not cover all edge cases or scenarios. It's recommended to review and enhance the tests for robustness as needed.
 
 ```bash
 python -m unittest discover -s test
@@ -86,10 +86,6 @@ Alternatively, if you have `pytest` installed, you can run:
 pytest
 ```
 
-## Disclaimer
-
-The tests included in this project were written by an AI assistant. While efforts have been made to ensure their accuracy, they might not cover all edge cases or scenarios. It's recommended to review and enhance the tests for robustness as needed.
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the License file for details.
